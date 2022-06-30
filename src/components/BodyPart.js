@@ -2,7 +2,7 @@ import React from 'react'
 import { Stack, Typography } from '@mui/material'
 import Icon from '../assets/icons/gym.png'
 
-function BodyPart({ item, bodyPart }) {
+function BodyPart({ item, bodyPart,setBodyPart }) {
     return (
         <Stack
             className='bodyPart-card'
@@ -11,7 +11,7 @@ function BodyPart({ item, bodyPart }) {
             type='button'
             sx={
                 {
-                    borderTop: bodyPart === item ? '4px solid #FF2625' : " ",
+                    borderTop: (bodyPart === item) ? '4px solid #FF2625' : 'none',
                     backgroundColor: '#fff',
                     borderBottomLeftRadius: '20px',
                     width: '270px',
@@ -20,11 +20,15 @@ function BodyPart({ item, bodyPart }) {
                     gap: '47px'
                 }
             }
-            onClick={setBodyPart(item)}
+            onClick={() => {
+                setBodyPart(item)
+                window.scrollTo({ top: 1800, left: 100, behaviour: 'smooth' })
+            }
+            }
         >
-            <img src={Icon} width='40px' height='40px' />
+            <img src={Icon} width='40px' height='40px' alt='body part icon' />
             <Typography fontSize='24px' fontWeight="bold" color="#3A1212" textTransform='capitalize' >{item}</Typography>
-        </Stack>
+        </Stack >
     )
 }
 

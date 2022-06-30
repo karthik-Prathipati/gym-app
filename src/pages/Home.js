@@ -1,5 +1,5 @@
 import { Box } from '@mui/material'
-import React ,{useState} from 'react'
+import React, { useState } from 'react'
 import SearchExercises from '../components/SearchExercises'
 import Exercises from '../components/Exercises';
 import HeroBanner from '../components/HeroBanner';
@@ -11,7 +11,11 @@ const Home = () => {
     <Box>
       <HeroBanner />
       <SearchExercises bodyPart={bodyPart} setBodyPart={setBodyPart} setExcercises={setExcercises} />
-      <Exercises />
+      <Exercises
+        setExcercises={setExcercises}
+        bodyPart={bodyPart}
+        excercises={excercises}
+      />
     </Box>
   )
 }
