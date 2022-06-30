@@ -24,7 +24,10 @@ const Exercises = ({ setExercises, bodyPart, exercises }) => {
         ))
         }
       </Stack>
+      {exercises.length > 9 && <Stack mt='100px' alignItems='center' color='primary' shape="rounded" defaultPage={1} count={exercises.length/9} >
 
+      </Stack>
+      }
     </Box>
   )
 }
