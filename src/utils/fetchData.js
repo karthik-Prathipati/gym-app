@@ -1,4 +1,4 @@
-const excerciseOptions = {
+const exerciseOptions = {
     method: 'GET',
     headers: {
         'X-RapidAPI-Key': process.env.REACT_APP_RAPID_API_URL_KEY,
@@ -12,6 +12,6 @@ async function fetchData(url, options) {
     const data = await responce.json();
     return data;
 }
-export { excerciseOptions, fetchData };
+export { exerciseOptions, fetchData };
 
 
