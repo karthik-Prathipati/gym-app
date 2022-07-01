@@ -1,12 +1,32 @@
-import React from 'react'
-import { useEffect, useState } from 'react';
-import { Pagination } from '@mui/material';
-import { Box, Typography, Stack } from '@mui/material';
+import React, { useEffect, useState } from 'react'
+import { Pagination, Box, Typography, Stack } from '@mui/material';
 import { exerciseOptions, fetchData } from '../utils/fetchData'
-import ExerciseCard from './ExerciseCard';
-
+import ExerciseCard from './ExerciseCard'
 
 const Exercises = ({ setExercises, bodyPart, exercises }) => {
+
+  const [currentPage, setCurrentPage] = useState(1)
+  const exercisePerPage = 9;
+
+  const indexOfLastPage = currentPage * exercisePerPage;
+  const indexOfFirstPage = indexOfLastPage - exercisePerPage;
+
+  useEffect(() => {
+    async function fetchBodyParts() {
+      const bodyPartData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`, exerciseOptions);
+      setExercises(bodyPartData)
+    }
+    fetchBodyParts();
+
+  }, [bodyPart])
+
+  const currentExercises = exercises.slice(indexOfFirstPage, indexOfLastPage)
+
+  function paginate(e, value) {
+    setCurrentPage(value)
+    window.scrollTo({ top: 1800, behaviour: 'smooth' })
+  }
+
   return (
     <Box id="exercises"
       sx={{
@@ -19,15 +39,18 @@ const Exercises = ({ setExercises, bodyPart, exercises }) => {
       </Typography>
       <Stack direction='row' flexWrap='wrap' justifyContent='center'
         sx={{ gap: { lg: '110px', xs: '50px' } }} >
-        {exercises.map((exercise, index) => (
+        {currentExercises.map((exercise, index) => (
           <ExerciseCard key={index} exercise={exercise} />
         ))
         }
       </Stack>
-      {exercises.length > 9 && <Stack mt='100px' alignItems='center' color='primary' shape="rounded" defaultPage={1} count={exercises.length/9} >
-
+      <Stack mt='100px' alignItems='center' >
+        {exercises.length > exercisePerPage &&
+          <Pagination
+            color='primary' shape="rounded" defaultPage={currentPage} count={Math.ceil(exercises.length / exercisePerPage)} onChange={paginate} size='large'
+          />
+        }
       </Stack>
-      }
     </Box>
   )
 }
