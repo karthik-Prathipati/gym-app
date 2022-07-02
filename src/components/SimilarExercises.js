@@ -15,6 +15,12 @@ function SimilarExercises({ similarTargetVideos, similarEquipmentVideos }) {
       <Stack direction='row' sx={{ p: '25px', position: 'relative' }}>
         <HorizontalScrollbar data={similarTargetVideos} isBodyParts={false} />
       </Stack>
+      <Typography variant='h4' mb='20px'>
+        Exercises that use same equipment
+      </Typography>
+      <Stack direction='row' sx={{ p: '25px', position: 'relative' }}>
+        <HorizontalScrollbar data={similarEquipmentVideos} isBodyParts={false} />
+      </Stack>
     </Box>
   )
 }
