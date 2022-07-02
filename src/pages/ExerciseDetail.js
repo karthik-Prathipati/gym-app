@@ -9,6 +9,9 @@ import { Box } from '@mui/material'
 const ExerciseDetail = () => {
   const [exerciseDetail, setExerciseDetail] = useState({})
   const [exerciseVideos, setExerciseVideos] = useState([])
+  const [similarTargetVideos, setSimilarTargetVideos] = useState([])
+  const [similarEquipmentVideos, setSimilarEquipmentVideos] = useState([])
+
   const { id } = useParams()
 
   useEffect(() => {
@@ -19,6 +22,16 @@ const ExerciseDetail = () => {
 
       setExerciseDetail(exerciseDetailData)
       const exerciseVideoDetail = await fetchData(`${youtubeExercise}/search?query=${exerciseDetailData.name}`,youtubeOptions)
+
+      const targetExerciseGroup = await fetchData(`${exerciseDbUrl}/exercises/target/${exerciseDetailData.target}`,exerciseOptions)
+
+      setSimilarTargetVideos(targetExerciseGroup)
+
+      const equipmentExerciseGroup = await fetchData(`${exerciseDbUrl}/exercises/equipment/${exerciseDetailData.equipment}`,exerciseOptions)
+
+      setSimilarEquipmentVideos(equipmentExerciseGroup)
+
+
       setExerciseVideos(exerciseVideoDetail.contents)
     }
     fetchExerciseDetail()
@@ -28,7 +41,7 @@ const ExerciseDetail = () => {
     <Box>
       <Detail exerciseDetail={exerciseDetail} />
       <ExerciseVideos name={exerciseDetail.name} exerciseVideos={exerciseVideos} />
-      <SimilarExercises />
+      <SimilarExercises similarEquipmentVideos={similarEquipmentVideos} similarTargetVideos={similarTargetVideos} />
     </Box>
   )
 }

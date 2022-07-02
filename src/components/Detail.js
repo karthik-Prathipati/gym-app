@@ -40,7 +40,6 @@ export default function Detail({ exerciseDetail }) {
                     It'll help improve your mood and keep you in good shape.
                 </Typography>
                 {extraDetail.map((detail) => (
-
                     <Stack key={detail.name} direction='row' alignItems='center' gap='24px' >
                         <Button sx={{ background: '#fff2db', borderRadius: '50%', width: '80px', height: '80px' }} >
                             <img src={detail.icon} alt='bodyPart' style={{ width: '40px', height: '40px' }} />

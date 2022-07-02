@@ -8,7 +8,7 @@ import '@fontsource/roboto/700.css';
 function ExerciseVideos({ name, exerciseVideos }) {
   return (
     <Box sx={{ mt: { lg: '160px', xs: '20px' }, p: '20px' }} >
-      <Typography variant='h4' mb='30px'>
+      <Typography variant='h4' mb='20px'>
         Watch <span style={{ color: '#ff2625', textTransform: 'capitalize' }} >{name}</span> exercise videos here
       </Typography>
       <Stack justifyContent='flex-start' flexWrap='wrap' alignItems='center'
