@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Pagination, Box, Typography, Stack } from '@mui/material';
 import { exerciseOptions, fetchData } from '../utils/fetchData'
 import ExerciseCard from './ExerciseCard'
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 const Exercises = ({ setExercises, bodyPart, exercises }) => {
 
@@ -13,8 +17,15 @@ const Exercises = ({ setExercises, bodyPart, exercises }) => {
 
   useEffect(() => {
     async function fetchBodyParts() {
-      const bodyPartData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`, exerciseOptions);
-      setExercises(bodyPartData)
+      let exercisesData = [];
+
+      if (bodyPart === 'all') {
+        exercisesData = await fetchData('https://exercisedb.p.rapidapi.com/exercises', exerciseOptions);
+      } else {
+        exercisesData = await fetchData(`https://exercisedb.p.rapidapi.com/exercises/bodyPart/${bodyPart}`, exerciseOptions);
+      }
+
+      setExercises(exercisesData);
     }
     fetchBodyParts();
 

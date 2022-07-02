@@ -3,6 +3,10 @@ import React from 'react'
 import { Link } from 'react-router-dom'
 import { Stack } from '@mui/material';
 import Logo from '../assets/images/Logo.png'
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 const Navbar = () => {
   return (

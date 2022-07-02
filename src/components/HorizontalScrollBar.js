@@ -5,6 +5,10 @@ import { ScrollMenu, VisibilityContext } from 'react-horizontal-scrolling-menu'
 import BodyPart from './BodyPart';
 import RightArrowIcon from '../assets/icons/right-arrow.png';
 import LeftArrowIcon from '../assets/icons/left-arrow.png';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 const LeftArrow = () => {
     const { scrollPrev } = useContext(VisibilityContext);

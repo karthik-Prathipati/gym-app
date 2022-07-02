@@ -2,6 +2,10 @@ import React, { useEffect, useState } from 'react'
 import { Box, Typography, TextField, Button, Stack } from '@mui/material'
 import { fetchData, exerciseOptions } from '../utils/fetchData.js';
 import HorizontalScrollBar from './HorizontalScrollBar.js';
+import '@fontsource/roboto/300.css';
+import '@fontsource/roboto/400.css';
+import '@fontsource/roboto/500.css';
+import '@fontsource/roboto/700.css';
 
 const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
   const [search, setSearch] = useState('');
@@ -10,7 +14,7 @@ const SearchExercises = ({ setExercises, bodyPart, setBodyPart }) => {
   useEffect(() => {
     async function fetchBodyParts() {
       const bodyPartData = await fetchData('https://exercisedb.p.rapidapi.com/exercises/bodyPartList', exerciseOptions);
-      setBodyParts([...bodyPartData]);
+      setBodyParts(['all',...bodyPartData]);
     }
     fetchBodyParts();
   }, [])
