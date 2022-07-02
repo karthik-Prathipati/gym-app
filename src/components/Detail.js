@@ -1,5 +1,5 @@
 import React from 'react'
-import { Typography, Box, Stack, Button } from '@mui/material';
+import { Typography, Stack, Button } from '@mui/material';
 import BodyPartImage from '../assets/icons/body-part.png'
 import equipmentImage from '../assets/icons/equipment.png'
 import targetImage from '../assets/icons/target.png'
@@ -10,7 +10,7 @@ import '@fontsource/roboto/700.css';
 
 export default function Detail({ exerciseDetail }) {
 
-    const { bodyPart, gifUrl, name, equipment, target } = exerciseDetail
+    const { gifUrl, name, target } = exerciseDetail
 
     const extraDetail = [
         {

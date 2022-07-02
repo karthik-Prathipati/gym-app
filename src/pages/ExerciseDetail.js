@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react'
-import { Params, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import { fetchData, exerciseOptions,youtubeOptions } from '../utils/fetchData'
 import Detail from '../components/Detail'
 import ExerciseVideos from '../components/ExerciseVideos'
